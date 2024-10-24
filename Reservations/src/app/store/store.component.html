@@ -1,4 +1,4 @@
-<div class="container-fluid"> 
+<!-- <div class="container-fluid"> 
   <div class="row">
      <div class="bg-dark text-white p-2">
        <span class="navbar-brand ml-2">Travel map</span>
@@ -14,3 +14,54 @@
   </div> 
 </div>
 
+ -->
+
+
+ <div class="tableContainer">
+  <table mat-table [dataSource]="destinations" class="mat-elevation-z3 fullWidth">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="name">Name</th>
+      <td mat-cell *matCellDef="let destination"> {{ destination.name }} </td>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef class="category">Category</th>
+      <td mat-cell *matCellDef="let destination"> {{ destination.category }} </td>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="description">Description</th>
+      <td mat-cell *matCellDef="let destination"> {{ destination.description }} </td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef class="price">Price</th>
+      <td mat-cell *matCellDef="let destination"> {{ destination.price }} </td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="timeFrame">
+      <th mat-header-cell *matHeaderCellDef class="timeFrame">Time</th>
+      <td mat-cell *matCellDef="let destination"> {{ destination.timeFrame }} </td>
+    </ng-container>
+
+    <!-- Checkbox Column (For Done/Complete Status) -->
+    <ng-container matColumnDef="done">
+      <th mat-header-cell *matHeaderCellDef class="done">Done</th>
+      <td mat-cell *matCellDef="let destination">
+        <mat-checkbox [(ngModel)]="destination.complete" color="primary">
+          <!-- {{ destination.complete }} -->
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="tableHeader"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>

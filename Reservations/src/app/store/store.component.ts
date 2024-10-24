@@ -7,9 +7,12 @@ import { Destination } from "../destination/destination.model";
   templateUrl: './store.component.html'
 }) 
 
-export class StoreComponent { 
-  constructor(private repository: DestinationRepository) {
 
+export class StoreComponent { 
+  destinations: Destination[] = [];
+  displayedColumns: string[] = ['name', 'category', 'description', 'price', 'timeFrame', 'done'];
+  constructor(private repository: DestinationRepository) {
+    this.destinations = this.repository.getDestinations();
    } 
   
   get destination(): Destination[] { 

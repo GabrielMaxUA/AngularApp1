@@ -1,5 +1,4 @@
-module.exports = function () { 
-  return { 
+export const data =  { 
     destinations: [ 
       { id: 1, name: "Centenial Park", category: "Recriational", 
       description: "A boat for one/two person", price: 275, timeFrame: "9:00 - 12:00" }, 
@@ -29,6 +28,5 @@ module.exports = function () {
         { id: 9, name: "Sleeping Giant", category: "Water Boat/ Hiking", 
           description: "Explore the wonders of the nature", price: 329.95, timeFrame: "15:00 - 18:00" },
       ],
-        reservations: [] 
-      } 
+        reservations: []  
     }

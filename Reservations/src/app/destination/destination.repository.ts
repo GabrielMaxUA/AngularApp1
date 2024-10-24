@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core"; 
 import { Destination } from "./destination.model"; 
-import { DataSource } from "./dataSource"; 
+import { data } from "../data"; 
 
 @Injectable()
 
@@ -8,12 +8,8 @@ import { DataSource } from "./dataSource";
   private destinations: Destination[] = []; 
   private categories: string[] = []; 
   
-  constructor(private dataSource: DataSource) { 
-    dataSource.getDestinations().subscribe(data => { 
-      this.destinations = data; 
-      this.categories = data.map(d => d.category ?? "(None)") 
-      .filter((c, index, array) => array.indexOf(c) == index).sort(); 
-    }); 
+  constructor() { 
+   this.loadData(); 
   } 
   
   getDestinations(category?: string): Destination[] { 
@@ -27,4 +23,13 @@ import { DataSource } from "./dataSource";
   getCategories(): string[] { 
     return this.categories; 
   } 
+
+  private loadData() {
+    // Access the destinations from data.js
+    this.destinations = data.destinations;
+    this.categories = data.destinations
+      .map((d) => d.category ?? '(None)')
+      .filter((c, index, array) => array.indexOf(c) === index)
+      .sort();
+  }
 }
